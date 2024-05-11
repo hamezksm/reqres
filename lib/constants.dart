@@ -1,5 +1,5 @@
 class Constants {
-  String url = 'http://127.0.0.1';
+  String url = 'http://192.168.100.2';
   String port = '8000';
 
   Constants();
