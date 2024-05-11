@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:reqres/constants.dart';
-import 'package:reqres/login.dart';
+import 'package:reqres/core/utils/constants.dart';
+import 'package:reqres/screens/login.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

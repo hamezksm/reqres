@@ -2,8 +2,8 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:reqres/constants.dart';
-import 'package:reqres/landing.dart';
+import 'package:reqres/core/utils/constants.dart';
+import 'package:reqres/screens/landing.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
