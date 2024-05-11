@@ -9,14 +9,14 @@ class APIModel {
   String firstName;
   String lastName;
   String username;
-  String emailAddress;
+  String email;
   String password;
 
   APIModel({
     required this.id,
     required this.firstName,
     required this.lastName,
-    required this.emailAddress,
+    required this.email,
     required this.username,
     required this.password,
   });
@@ -26,6 +26,6 @@ class APIModel {
 
   @override
   String toString() {
-    return 'APIModel {id: $id, first_name: $firstName, last_name: $lastName, username: $username, email: $emailAddress, password: $password}';
+    return 'APIModel {id: $id, first_name: $firstName, last_name: $lastName, username: $username, email: $email, password: $password}';
   }
 }

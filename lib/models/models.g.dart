@@ -10,7 +10,7 @@ APIModel _$APIModelFromJson(Map<String, dynamic> json) => APIModel(
       id: json['id'] as String,
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
-      emailAddress: json['email_address'] as String,
+      email: json['email'] as String,
       username: json['username'] as String,
       password: json['password'] as String,
     );
@@ -20,6 +20,6 @@ Map<String, dynamic> _$APIModelToJson(APIModel instance) => <String, dynamic>{
       'first_name': instance.firstName,
       'last_name': instance.lastName,
       'username': instance.username,
-      'email_address': instance.emailAddress,
+      'email': instance.email,
       'password': instance.password,
     };
