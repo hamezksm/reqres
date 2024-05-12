@@ -1,5 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:reqres/core/utils/constants.dart';
 import 'package:reqres/screens/login.dart';
 
@@ -20,7 +21,8 @@ class _SignUpState extends State<SignUp> {
       TextEditingController();
   Constants constants = Constants();
 
-  Dio dio = Dio();
+  // Dio dio = Dio();
+  var client = Client();
 
   bool _obscureText = true;
   final RegExp _emailRegExp = RegExp(
@@ -29,12 +31,12 @@ class _SignUpState extends State<SignUp> {
   bool _isValidEmail = true;
 
   void signUp() async {
-    String apiUrl = '${constants.api}/api/users';
+    String apiUrl = 'localhost:8000';
 
     try {
-      Response response = await dio.post(
-        apiUrl,
-        data: {
+      var response = await http.post(
+        Uri.http(apiUrl, '/auth-api/registration/'),
+        body: {
           'first_name': firstNameController.text,
           'last_name': lastNameController.text,
           'email': emailController.text,
@@ -43,7 +45,7 @@ class _SignUpState extends State<SignUp> {
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         print('data submitted successfully');
         Navigator.push(
           context,
@@ -76,6 +78,15 @@ class _SignUpState extends State<SignUp> {
     String confirmPassword = confirmPasswordController.text;
 
     if (password == confirmPassword) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool verifyEmailOrUsername() {
+    if (emailController.text.isNotEmpty ||
+        usernameController.text.isNotEmpty == true) {
       return true;
     } else {
       return false;
@@ -220,11 +231,17 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     onTap: () {
-                      if (verifyPasswords()) {
+                      if (verifyPasswords() && verifyEmailOrUsername()) {
                         signUp();
+                      } else {
+                        const AlertDialog(
+                          title: Text('Add either email or password'),
+                          content: Text(
+                              'Please fill in a valid email or username to register'),
+                        );
                       }
                     },
-                  )
+                  ),
                 ],
               ),
             ),

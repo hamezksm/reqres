@@ -4,5 +4,5 @@ class Constants {
 
   Constants();
 
-  String get api => "$url:$port";
+  String get api => "$url:$port/";
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:reqres/core/utils/constants.dart';
 import 'package:reqres/screens/landing.dart';
 
@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
   final TextEditingController passwordController = TextEditingController();
   Constants constants = Constants();
 
-  Dio dio = Dio();
+  var client = Client();
 
   bool _obscureText = true;
 
@@ -28,12 +28,11 @@ class _LoginState extends State<Login> {
   }
 
   void authenticate() async {
-    String apiUrl = '${constants.api}/api/users';
-
     try {
-      Response response = await dio.post(
-        apiUrl,
-        data: {
+      var url = Uri.http(constants.api, 'auth-api/login');
+      var response = await http.post(
+        url,
+        body: {
           'username': usernameController.text,
           'password': passwordController.text
         },
