@@ -55,8 +55,9 @@ class MyHomePage extends StatelessWidget {
                 width: 150.0,
                 padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                 decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(5.0)),
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
                 child: const Text(
                   'Sign up',
                   style: TextStyle(color: Colors.black),
@@ -69,4 +70,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
